@@ -36,13 +36,21 @@
           Search
         </button>
       </section>
-      <section class="container d-flex flex-column align-items-center mb-4">
+      <section
+        id="selected"
+        class="container d-flex flex-column align-items-center mb-4"
+      >
         <h4>Selected Meal</h4>
         <div id="detail-container" style="width: 18rem"></div>
       </section>
       <section class="container">
-        <h3 id="food-title" class="my-3">All Meals</h3>
-        <div id="meal-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+        <a class="text-black text-decoration-none" href="#selected">
+          <h3 id="food-title" class="my-3"></h3>
+          <div
+            id="meal-container"
+            class="row row-cols-1 row-cols-md-3 g-4"
+          ></div>
+        </a>
       </section>
     </main>
     <script
