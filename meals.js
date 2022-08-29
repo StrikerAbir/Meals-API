@@ -15,18 +15,22 @@ function setHTML(meal, mealContainer) {
         `
   mealContainer.appendChild(div);
 }
+
 const loadAll = () => {
+  const detailContainer = document.getElementById('detail-container');
+  detailContainer.innerHTML = ``;
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=`
   fetch(url).then((response) => response.json()).then(data => displayData(data.meals, 'All'))
 }
 loadAll()
+
 const loadData = (search) => {
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
   fetch(url).then((response) => response.json()).then(data => displayData(data.meals, search))
 
 }
-const displayData = (data, str = 0) => {
 
+const displayData = (data, str = 0) => {
   const mealContainer = document.getElementById('meal-container');
   mealContainer.innerHTML = ``; //eta na dile search er por sudhu ota soho ager gulo thakbe.
   if (str == 0) {
@@ -50,9 +54,12 @@ const searchFood = () => {
 
   loadData(value);
   const foodTitle = document.getElementById('food-title');
-  foodTitle.innerText = `Food type ${value.toUpperCase()}`
-  searchField.value = '';
-
+  if (value == '') {
+    foodTitle.innerText = `Food type ALL`
+  } else {
+    foodTitle.innerText = `Food type ${value.toUpperCase()}`
+    searchField.value = '';
+  }
 }
 
 const loadDetails = (mealID) => {
